@@ -6,18 +6,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "usuarios")
-public class UsuarioEntidad {
+@Table(name = "respuestas")
+public class RespuestaEntidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private String email;
-    private String contrasenia;
+    private String mensaje;
+    private TopicoEntidad topico;
+    private LocalDateTime fechaCreacion;
+    private UsuarioEntidad autor;
 
 }
