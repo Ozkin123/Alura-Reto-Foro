@@ -2,7 +2,7 @@ package com.aluraRetoForo.entidades;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -19,7 +19,7 @@ public class TopicoEntidad {
     private Long id;
     private String titulo;
     private String mensaje;
-    private LocalDateTime fechaCreacion;
+    private LocalDate fechaCreacion;
     private boolean status;
     @ManyToOne
     @JoinColumn(name = "usuarios")

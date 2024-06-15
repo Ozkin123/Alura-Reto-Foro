@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -19,7 +19,7 @@ public class RespuestaEntidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String mensaje;
-    private LocalDateTime fechaCreacion;
+    private LocalDate fechaCreacion;
     private boolean solucion;
     @ManyToOne
     @JoinColumn(name = "topicos")
