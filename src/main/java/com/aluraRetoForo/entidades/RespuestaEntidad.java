@@ -20,6 +20,7 @@ public class RespuestaEntidad {
     private Long id;
     private String mensaje;
     private LocalDateTime fechaCreacion;
+    private boolean solucion;
     @ManyToOne
     @JoinColumn(name = "topicos")
     private TopicoEntidad topicoEntidad;
