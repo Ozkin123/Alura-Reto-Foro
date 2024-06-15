@@ -19,8 +19,13 @@ public class RespuestaEntidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String mensaje;
-    private TopicoEntidad topico;
     private LocalDateTime fechaCreacion;
-    private UsuarioEntidad autor;
+    //@ManyToOne
+    //@JoinColumn(name = "usuarios_id", referencedColumnName = "usuarios",insertable = false,nullable = false)
+    //private UsuarioEntidad autor;
+    //@ManyToOne
+    //@JoinColumn(name = "topicos_id", referencedColumnName = "topicos",insertable = false,nullable = false)
+    //private TopicoEntidad topico;
+
 
 }
