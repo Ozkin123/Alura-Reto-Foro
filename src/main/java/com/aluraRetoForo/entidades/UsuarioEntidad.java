@@ -23,5 +23,7 @@ public class UsuarioEntidad {
     private String contrasenia;
     @OneToMany(mappedBy = "usuarios")
     private List<TopicoEntidad> topicos;
+    @OneToMany(mappedBy = "usuarioEntidad")
+    private List<RespuestaEntidad> respuestas;
 
 }

@@ -23,6 +23,9 @@ public class RespuestaEntidad {
     @ManyToOne
     @JoinColumn(name = "topicos")
     private TopicoEntidad topicoEntidad;
+    @ManyToOne
+    @JoinColumn(name = "usuarios")
+    private UsuarioEntidad usuarioEntidad;
 
 
 
