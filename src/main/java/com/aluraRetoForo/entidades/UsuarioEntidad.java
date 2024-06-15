@@ -21,9 +21,7 @@ public class UsuarioEntidad {
     private String nombre;
     private String email;
     private String contrasenia;
-    //@OneToMany(mappedBy = "TopicoEntidad")
-    //private List<TopicoEntidad> topicos;
-    //@OneToMany(mappedBy = "RespuestaEntidad")
-    //private List<RespuestaEntidad> respuestas;
+    @OneToMany(mappedBy = "usuarios")
+    private List<TopicoEntidad> topicos;
 
 }
