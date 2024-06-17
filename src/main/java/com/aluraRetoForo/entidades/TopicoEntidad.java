@@ -11,13 +11,14 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 @Table(name = "topicos")
 public class TopicoEntidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String titulo;
+    @Column(unique = true)
     private String mensaje;
     private LocalDate fechaCreacion;
     private boolean status;
