@@ -21,7 +21,7 @@ public class UsuarioEntidad {
     private String nombre;
     private String email;
     private String contrasenia;
-    @OneToMany(mappedBy = "usuarios")
+    @OneToMany(mappedBy = "autor")
     private List<TopicoEntidad> topicos;
     @OneToMany(mappedBy = "usuarioEntidad")
     private List<RespuestaEntidad> respuestas;
