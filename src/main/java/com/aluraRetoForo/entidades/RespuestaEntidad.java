@@ -21,7 +21,7 @@ public class RespuestaEntidad {
     private String mensaje;
     private LocalDate fechaCreacion;
     private boolean solucion;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "topicos")
     private TopicoEntidad topicoEntidad;
     @ManyToOne

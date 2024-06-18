@@ -7,18 +7,15 @@ import java.util.List;
 
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Table(name = "topicos")
 public class TopicoEntidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String titulo;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String mensaje;
     private LocalDate fechaCreacion;
     private boolean status;
