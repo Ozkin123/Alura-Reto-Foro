@@ -25,16 +25,15 @@ public class FiltroSeguridad extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        // Obtener el token del header
+
         var authHeader = request.getHeader("Authorization");
         if (authHeader != null) {
             var token = authHeader.replace("Bearer ", "");
-            var nombreUsuario = servicioToken.getSubject(token); // extract username
+            var nombreUsuario = servicioToken.getSubject(token);
             if (nombreUsuario != null) {
-                // Token valido
                 var usuario = usuarioRespositorio.findByNombre(nombreUsuario);
-                var authentication = new UsernamePasswordAuthenticationToken(usuario,
-                        usuario.getAuthorities()); // Forzamos un inicio de sesion
+                var authentication = new UsernamePasswordAuthenticationToken(usuario,null,
+                        usuario.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
