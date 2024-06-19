@@ -2,8 +2,10 @@ package com.aluraRetoForo.controladores;
 
 
 import com.aluraRetoForo.dto.Autenticacion.DatosAutenticacionUsuario;
+import com.aluraRetoForo.entidades.UsuarioEntidad;
+import com.aluraRetoForo.infra.seguridad.DatoJWT;
+import com.aluraRetoForo.infra.seguridad.ServicioToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,13 +22,18 @@ public class AutenticacionController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private ServicioToken servicioToken;
+
+
 
     @PostMapping
     ResponseEntity autenticarUsuario(@RequestBody DatosAutenticacionUsuario datosAutenticacionUsuario){
-        Authentication token = new UsernamePasswordAuthenticationToken(
+        Authentication authToken = new UsernamePasswordAuthenticationToken(
                 datosAutenticacionUsuario.nombre(),datosAutenticacionUsuario.clave());
-        authenticationManager.authenticate(token);
-        return ResponseEntity.ok().build();
+        var usuarioAutenticado= authenticationManager.authenticate(authToken);
+        var JWToken = servicioToken.generarToken((UsuarioEntidad) usuarioAutenticado.getPrincipal());
+        return ResponseEntity.ok(new DatoJWT(JWToken));
 
     }
 
