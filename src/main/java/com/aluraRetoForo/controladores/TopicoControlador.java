@@ -9,6 +9,7 @@ import com.aluraRetoForo.mapper.MapperPeticionesRespuesta;
 import com.aluraRetoForo.repositorios.TopicoRepositorio;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,13 +25,14 @@ public class TopicoControlador {
 
 
     @GetMapping("/hola")
-        public String holaMundo(){
+    public String holaMundo(){
             return "Hola MUndo";
     }
 
     @GetMapping
-    public List<TopicoEntidad> listarTopicos(){
-       return topicoRepositorio.findAll();
+    public ResponseEntity<List<TopicoEntidad>> listarTopicos(){
+       return ResponseEntity.ok(topicoRepositorio.findAll());
+
     }
 
     @GetMapping("/{id}")
